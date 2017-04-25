@@ -1,17 +1,18 @@
 # Web Push Notifications
 
 
-Web Push Notifications requires a service worker to run in the browser through which push notification can be sent. It sends the notification through Firebase Cloud Messaging enabling applications to interact with the users even while not using the application.
+Web Push Notifications require a service worker to run in the browser through which push notification can be sent. It sends the notification through Firebase Cloud Messaging, enabling applications to interact with the users even while not using the application.
 
  ### Registering application on Firebase
- To send Web Push Notification to the client, you need to register your application on Firebase Console. For registering a new project follow the following steps:
+ To send Web Push Notification to the client, you need to register your application on Firebase Console.
+ 
 - Register a new project on Firebase.
 - Go to Settings > Project Settings.
 - Go to Cloud Messaging Tabs.
 - Save the server key and sender id. Sender id will be used while registering service worker on client’s machine and server key will be used to send push notification. Sender Id will be stored in the manifest.json file and server key will be used to send chrome push notification from the server.
 
 ### Setting up service worker
-- Create a manifest.json file which will contain the information about the application.
+- Create a manifest.json file which will contain information about the application.
  ```
 {
 "name": <Application Name>,
@@ -55,7 +56,7 @@ self.addEventListener('notificationclick', function(event) {
 
 Create a javascript file which contains the code for subscribing to push notification, adding service worker, asking user for notification permission and storing the endpoint in the database. 
 
-Define the following variables
+Define the following variables:
 ```
 var serviceWorkerSrc = "/static/serviceworker.js";
 var callhome = function(status) {
@@ -115,7 +116,7 @@ Define initialiseState() which will check whether notifications are supported by
    subscribe();
  }
 ```
-Define subscribe() which try to subscribe the user to push notification. If subscription does not exist, it will ask user for notification permission. Once notification permission is granted, it will receive the subscription details which will be sent to postSubscribeObj() for processing. If user has already subscribed the same subscription detials will be reuturned.
+Define subscribe() which tries to subscribe the user to push notification. If subscription does not exist, it will ask user for notification permission. Once notification permission is granted, it will receive the subscription details which will be sent to postSubscribeObj() for processing. If user has already subscribed the same subscription details will be returned.
 
 ```
  function subscribe() {
@@ -175,7 +176,7 @@ Define postSubscribeObj() which updates the endpoint on the server by making an 
   
  }
 ```
-Call onPageLoad() to initialize the worker status check and updating subscription.
+Call onPageLoad() to initialize the worker status check and update subscription.
 ```
  onPageLoad();
 ```
@@ -184,7 +185,7 @@ Call onPageLoad() to initialize the worker status check and updating subscriptio
 - Add above javascript file and manifest.json on the home page where you want to ask notification permission from the user.
 - If the user allows, the push notification will be subscribed and the endpoint can be stored. On successful registration, add an API call to save the notification endpoint which will be used to send web push notification to the user.
 ### Sending Web Push Notification
-On successful subscription, endpoint will be stored which can be used to send notification to the user. Endpoint if in the following format:
+On successful subscription, endpoint will be stored which can be used to send notification to the user.
 For python, Pywebpush package can be used to send web push notification.
 	
     The subscription JSON will be received on successful subscription.
