@@ -51,7 +51,7 @@ self.addEventListener('notificationclick', function(event) {
 ```
 
 
-- Subscribing/ Unsubscribing User
+# Subscribing/ Unsubscribing User
 
 Create a javascript file which contains the code for subscribing to push notification, adding service worker, asking user for notification permission and storing the endpoint in the database. 
 
