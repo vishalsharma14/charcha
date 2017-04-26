@@ -1,5 +1,23 @@
-# Web Push Notifications
+---
+layout: post
+title: Web Push Notifications
+date: 2017-04-26
+categories: technology
+tags: 
+  - push-notifications
+  - python
+  - django
+  - chrome-push-notifications
+  - web-push-notifications
+permalink: /2017/04/26/web-push-notifications/
+author: vishal sharma
+show_suggestions_by_tag: django
+excerpt: Discusses the implementation of web push notifications.
+top_blog: true
+---
 
+This is the third post in the Django Blog Series. In this post we will go through implementation of web push notifications in Django. 
+This post is inspired from the push notifications of [Charcha Discussion Forum](https://charcha.hashedin.com). You can find the full code for the charcha forum [here](https://github.com/hashedin/charcha/pushpa).
 
 Web Push Notifications require a service worker to run in the browser through which push notification can be sent. It sends the notification through Firebase Cloud Messaging, enabling applications to interact with the users even while not using the application.
 
@@ -192,6 +210,12 @@ For python, Pywebpush package can be used to send web push notification.
     GCM_KEY - The server key from the Firebase console
     ttl - Time to Live (Integer)
 
+**PRE REQUISITE**
+```
+Pywebpush dependency
+Explicity add pyelliptic==1.5.7 in requirements file as newer version has some issues.
+```
+
 ```
 from pywebpush import WebPusher
 
@@ -216,5 +240,3 @@ WebPusher(subscription).\
 https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
 
 Push Libraries- https://github.com/web-push-libs/
-
-
