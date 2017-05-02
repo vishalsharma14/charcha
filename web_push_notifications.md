@@ -21,7 +21,9 @@ This post is inspired from the push notifications of [Charcha Discussion Forum](
 
 Web Push Notifications require a service worker to run in the browser through which push notification can be sent. It sends the notification through Firebase Cloud Messaging, enabling applications to interact with the users even while not using the application.
 
- ### Registering application on Firebase
+
+### Registering application on Firebase
+ 
  To send Web Push Notification to the client, you need to register your application on Firebase Console.
  
 - Register a new project on Firebase.
@@ -48,7 +50,7 @@ self.addEventListener('push', function(event) {
 
  // Keep the service worker alive until the notification is created.
  event.waitUntil(
-   // Show a notification with title 'ServiceWorker Cookbook' and use the payload
+   // Show a notification with title and use the payload
    // as the body.
    self.registration.showNotification(payload.title, payload.options)
  );
@@ -202,6 +204,8 @@ Call onPageLoad() to initialize the worker status check and update subscription.
 
 - Add above javascript file and manifest.json on the home page where you want to ask notification permission from the user.
 - If the user allows, the push notification will be subscribed and the endpoint can be stored. On successful registration, add an API call to save the notification endpoint which will be used to send web push notification to the user.
+
+
 ### Sending Web Push Notification
 On successful subscription, endpoint will be stored which can be used to send notification to the user.
 For python, Pywebpush package can be used to send web push notification.
@@ -240,3 +244,4 @@ WebPusher(subscription).\
 https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
 
 Push Libraries- https://github.com/web-push-libs/
+
